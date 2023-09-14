@@ -2,10 +2,18 @@
 
     <html>
         <head>
-            Hello, this is my page. Enjoy.
+            <link rel="stylesheet" href="template.css" type="text/css"> 
+            <div class="highlight">Hello, this is my page. Enjoy.</div>
             <style>
                 body {background-color: maroon;}
+                p {border: 2px solid rgb(71, 92, 213); margin: 50px;}
+                
+                @media only screen and (max-width: 600px) {.example {background: whitesmoke;}}
 
+                @media only screen and (min-width: 600px) {.example {background: gray;}}
+
+                @media only screen and (min-width: 992px) {.example {background: yellowgreen;}} 
+                .center {text-align: center;}
             </style>
         </head>
         <body>
@@ -17,7 +25,7 @@
                 Major: Computer Science
             </p>
             <h2 id="Education"> Education </h2>
-            <p>
+            <p id="p1">
                 I've been to Archbishop Molloy for 4 years and St John's for 3 years now. I have learned
                 French, Chinese, and very little Spanish although I would not call myself proficient in either languages.
                 <ul>
