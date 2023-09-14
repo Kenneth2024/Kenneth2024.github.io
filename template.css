@@ -8,15 +8,13 @@ body{
 p{
     text-align: justify;
 }
-h1{
+h{
     text-align: center;
+    font-weight: 400;
 }
 .highlight{
     font-weight: 700;
     color: forestgreen;
-}
-h1, h2{
-    font-weight: 400;
 }
 
 ul li{
