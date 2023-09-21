@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kenneth's Profile</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        #highlight {
+            border: 3px solid lightblue;
+        }
+
+        @media print {
+            body {
+                color: black;
+                background-color: white;
+            }
+
+            img {
+                display: none;
+            }
+        }
+    </style>
+    
+</head>
+
+<body style="background-color: lightgray;">
+    <div class="container">
+        <div class="highlight" id="highlight">Hello, this is my page. Enjoy.</div>
+
+        <h1 id="Profile Information">Profile Information</h1>
+        <div class="card" style="width:400px">
+          <img class="card-img-top" src="https://images.saymedia-content.com/.image/t_share/MTk2NzY3MjA5ODc0MjY5ODI2/top-10-cutest-cat-photos-of-all-time.jpg" alt="Card image" style="width:100%">
+          <div class="card-body">
+            <h4 class="card-title">Kenneth Wong</h4>
+            <p class="card-text">I major in Computer Science</p>
+          </div>
+          </div>
+
+        <h2 id="Education">Education</h2>
+        <p id="p1">
+            I've been to Archbishop Molloy for 4 years and St John's for 3 years now. I have learned
+            French, Chinese, and very little Spanish although I would not call myself proficient in either languages.
+        </p>
+        <ul>
+            <li>Archbishop Molloy Diploma</li>
+        </ul>
+
+        <h3 id="Work Experience">Work Experience</h3>
+        <ul>
+            <li>None</li>
+        </ul>
+
+        <h4 id="Programming Skills">Programming Skills</h4>
+        <p>
+            Java: Advanced<br>
+            Python: Beginner<br><br>
+        </p>
+        <p>
+            I've mainly used Java to program. Not exactly learning Python
+            as I have been trying to translate some Python scripts into Java
+        </p>
+
+        <h5 id="Favorite Film, Song, TV show">Favorite Film, Song, TV show</h5>
+        <table class="table">
+          <thead class="thead-dark">
+              <tr>
+                  <th>Name</th>
+                  <th>URL</th>
+              </tr>
+          </thead>
+          <tbody>
+            <div class="btn-group-vertical">
+              <tr>
+                  <td>Film: The Night Before Christmas</td>
+                  <td><button type="button" class="btn btn-primary"><a href="https://www.imdb.com/title/tt0107688/" target="_blank"><span style="color: red">Click here</span></a></button></td>
+              </tr>
+              <tr>
+                  <td>Song: <span style="color: blue">Journey - Destiny 2</span></td>
+                  <td><button type="button" class="btn btn-primary"><a href="https://www.youtube.com/watch?v=zYfe9caNqfA" target="_blank"><span style="color: red">Click here</span></a></button></td>
+              </tr>
+              <tr>
+                  <td>TV Show: None</td>
+                  <td>N/A</td>
+              </tr>
+              </div>
+          </tbody>
+        </table>
+      
+
+        <h6 id="Favorite Website">Favorite Website</h6>
+        <p>
+            Favorite Website: <a class="special-link" href="https://www.youtube.com" target="_blank">Youtube</a>
+        </p>
+        <p>You know what this site's about cause you've definitely browsed through it from boredom.</p>
+
+        <h7 id="Menu">Menu</h7>
+        <p>
+          <ul class="list-group">
+            <li class="list-group-item"><a href="#Profile Information">Profile Information</a></li>
+            <li class="list-group-item"><a href="#Education">Education</a></li>
+            <li class="list-group-item"><a href="#Work Experience">Work Experience</a></li>
+            <li class="list-group-item"><a href="#Programming Skills"> Programming Skills</a></li>
+            <li class="list-group-item"><a href="#Favorite Film, Song, TV show">Favorite Film, Song, TV show</a></li>
+            <li class="list-group-item"><a href="#Favorite Website">Favorite Website</a></li>
+            <li class="list-group-item"><a href="#Projects">Projects</a></li>
+          </ul>
+        </p>
+
+        <h8 id="Projects">Projects</h8>
+        <div>
+            <ul>
+                <li>This website</li><p>Marks the beginning of HTML learning</p>
+                <li><div class="spinner-border spinner-border-sm"></div></li>
+            </ul>
+        </div>
+
+        <iframe width="420" height="315" src="https://www.youtube.com/embed/jUD_hvfERfI" allow="autoplay;loop">
+        </iframe>
+    </div>
+
+    <div class="dropdown">
+      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+        :D
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="https://media-be.chewy.com/wp-content/uploads/2019/10/28105544/catbehavior-HERO-1024x576.jpg" target="_blank">Open me</a>
+      </div>
+    </div>
+    <style>
+        a:hover {
+            display: inline-block;
+            text-decoration: underline;
+            transform: scale(1.5);
+            transition: transform 0.5s ease;
+        }
+
+        .special-link {
+            background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</body>
+
+</html>
