@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const taskForm = document.getElementById('task-form');
     const taskList = document.getElementById('task-list');
-    const tasks = [];
+    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
     taskForm.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -15,6 +15,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
             displayTask(task);
             taskForm.reset();
+
+            // Save the updated tasks to local storage
+            localStorage.setItem('tasks', JSON.stringify(tasks));
         }
     });
 
@@ -51,6 +54,9 @@ document.addEventListener('DOMContentLoaded', function () {
             tasks.splice(index, 1);
         }
         taskItem.remove();
+
+        // Save the updated tasks to local storage after removal
+        localStorage.setItem('tasks', JSON.stringify(tasks));
     }
 
     function toggleComplete(taskItem, task, completeButton) {
@@ -63,5 +69,8 @@ document.addEventListener('DOMContentLoaded', function () {
             taskItem.classList.remove('completed');
             completeButton.textContent = 'Mark as Complete';
         }
+
+        // Save the updated tasks to local storage after completion toggle
+        localStorage.setItem('tasks', JSON.stringify(tasks));
     }
 });
