@@ -1,3 +1,57 @@
-.completed {
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: lightblue;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+.task-inputs {
+    margin-top: 20px;
+}
+
+.task-inputs form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.task-inputs label,
+.task-inputs select,
+.task-inputs button {
+    margin: 5px;
+}
+
+.task-list-container {
+    margin-top: 20px;
+    text-align: left;
+}
+
+#task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li.completed {
     text-decoration: line-through;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+button:focus {
+    outline: none;
 }

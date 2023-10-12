@@ -1,43 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const taskForm = document.getElementById('task-form');
     const taskList = document.getElementById('task-list');
-    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-
-    function updateTaskList() {
-        taskList.innerHTML = ''; 
-        tasks.forEach((task, index) => {
-            const taskItem = document.createElement('li');
-            taskItem.textContent = `${task.title} (Priority: ${task.priority})`;
-
-            const removeButton = document.createElement('button');
-            removeButton.textContent = 'Remove';
-            removeButton.addEventListener('click', function () {
-                removeTask(taskItem, index);
-            });
-
-            const completeButton = document.createElement('button');
-            completeButton.textContent = task.status === 'complete' ? 'Mark as Incomplete' : 'Mark as Complete';
-            completeButton.addEventListener('click', function () {
-                toggleComplete(taskItem, index, completeButton);
-            });
-
-            taskItem.appendChild(completeButton);
-            taskItem.appendChild(removeButton);
-
-            if (task.status === 'complete') {
-                taskItem.classList.add('completed');
-                const checkmarkIcon = document.createElement('i');
-                checkmarkIcon.className = 'fas fa-check-circle text-success';
-                taskItem.appendChild(checkmarkIcon);
-            }
-
-            taskList.appendChild(taskItem);
-        });
-        localStorage.setItem('tasks', JSON.stringify(tasks));
-    }
-
-
-    updateTaskList();
+    const tasks = [];
 
     taskForm.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -49,18 +13,55 @@ document.addEventListener('DOMContentLoaded', function () {
             const task = { title: taskTitle, priority: taskPriority, status: 'incomplete' };
             tasks.push(task);
 
-            updateTaskList();
+            displayTask(task);
             taskForm.reset();
         }
     });
 
-    function removeTask(taskItem, index) {
-        tasks.splice(index, 1);
-        updateTaskList(); 
+    function displayTask(task) {
+        const taskItem = document.createElement('li');
+        taskItem.textContent = `${task.title} (Priority: ${task.priority})`;
+        
+        const removeButton = document.createElement('button');
+        removeButton.textContent = 'Remove';
+        removeButton.addEventListener('click', function () {
+            removeTask(taskItem, task);
+        });
+
+        const completeButton = document.createElement('button');
+        completeButton.textContent = 'Mark as Complete';
+        completeButton.addEventListener('click', function () {
+            toggleComplete(taskItem, task, completeButton);
+        });
+
+        taskItem.appendChild(completeButton);
+        taskItem.appendChild(removeButton);
+
+        if (task.status === 'complete') {
+            taskItem.classList.add('completed');
+            completeButton.textContent = 'Mark as Incomplete';
+        }
+
+        taskList.appendChild(taskItem);
     }
 
-    function toggleComplete(taskItem, index, completeButton) {
-        tasks[index].status = tasks[index].status === 'incomplete' ? 'complete' : 'incomplete';
-        updateTaskList(); 
+    function removeTask(taskItem, task) {
+        const index = tasks.indexOf(task);
+        if (index > -1) {
+            tasks.splice(index, 1);
+        }
+        taskItem.remove();
+    }
+
+    function toggleComplete(taskItem, task, completeButton) {
+        if (task.status === 'incomplete') {
+            task.status = 'complete';
+            taskItem.classList.add('completed');
+            completeButton.textContent = 'Mark as Incomplete';
+        } else {
+            task.status = 'incomplete';
+            taskItem.classList.remove('completed');
+            completeButton.textContent = 'Mark as Complete';
+        }
     }
 });

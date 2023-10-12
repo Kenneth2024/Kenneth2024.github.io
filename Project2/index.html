@@ -2,7 +2,6 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
     <h1>Task List</h1>
@@ -16,6 +15,12 @@
             <option value="medium">Medium</option>
             <option value="high">High</option>
         </select>
+        
+        <label>Status:</label>
+        <label for="status-incomplete">Incomplete</label>
+        <input type="radio" name="task-status" id="status-incomplete" value="incomplete" checked>
+        <label for="status-complete">Complete</label>
+        <input type="radio" name="task-status" id="status-complete" value="complete">
         
         <button type="submit">Add Task</button>
     </form>
