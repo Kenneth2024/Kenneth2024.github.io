@@ -1,0 +1,82 @@
+{
+    "quizzes": [
+      {
+        "questions": [
+          {
+            "type": "multiple_choice",
+            "question": "What is the capital of France?",
+            "options": ["Berlin", "Madrid", "Paris", "Rome"],
+            "correct_answer": "Paris"
+          },
+          {
+            "type": "narrative",
+            "question": "Describe a memorable experience you had during your last vacation.",
+            "response": ""
+          },
+          {
+            "type": "image_selection",
+            "question": "Select the image that best represents a sunny day:",
+            "options": [
+              {"id": 1, "url": "https://example.com/sunny_image1.jpg"},
+              {"id": 2, "url": "https://example.com/sunny_image2.jpg"},
+              {"id": 3, "url": "https://example.com/sunny_image3.jpg"}
+            ],
+            "selected_image": null
+          },
+          {
+            "type": "multiple_choice",
+            "question": "Which planet is known as the Red Planet?",
+            "options": ["Mars", "Jupiter", "Venus", "Saturn"],
+            "correct_answer": "Mars"
+          },
+          {
+            "type": "narrative",
+            "question": "What is your favorite book, and why?",
+            "response": ""
+          }
+        ]
+      },
+      {
+        "questions": [
+          {
+            "type": "image_selection",
+            "question": "Select the image that best represents a snowy day:",
+            "options": [
+              {"id": 4, "url": "https://example.com/snowy_image1.jpg"},
+              {"id": 5, "url": "https://example.com/snowy_image2.jpg"},
+              {"id": 6, "url": "https://example.com/snowy_image3.jpg"}
+            ],
+            "selected_image": null
+          },
+          {
+            "type": "multiple_choice",
+            "question": "Which programming language is often used for web development?",
+            "options": ["Python", "Java", "HTML", "JavaScript"],
+            "correct_answer": "JavaScript"
+          },
+          {
+            "type": "narrative",
+            "question": "Describe a goal you want to achieve in the next year.",
+            "response": ""
+          },
+          {
+            "type": "multiple_choice",
+            "question": "What is the largest mammal in the world?",
+            "options": ["Elephant", "Blue Whale", "Giraffe", "Hippopotamus"],
+            "correct_answer": "Blue Whale"
+          },
+          {
+            "type": "image_selection",
+            "question": "Select the image that best represents a rainy day:",
+            "options": [
+              {"id": 7, "url": "https://example.com/rainy_image1.jpg"},
+              {"id": 8, "url": "https://example.com/rainy_image2.jpg"},
+              {"id": 9, "url": "https://example.com/rainy_image3.jpg"}
+            ],
+            "selected_image": null
+          }
+        ]
+      }
+    ]
+  }
+  

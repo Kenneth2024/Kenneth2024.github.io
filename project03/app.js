@@ -1,32 +1,107 @@
-// Fetch data from the static API using async/await or .then syntax
+// app.js
+const apiEndpoint = 'https://my-json-server.typicode.com/Kenneth2024/project03database';
 
-// Handlebars template for quiz questions
-const quizTemplateSource = document.getElementById("quiz-template").innerHTML;
-const quizTemplate = Handlebars.compile(quizTemplateSource);
+let quizData, currentQuestionIndex, correctAnswers, startTime;
 
-// Handlebars template for quiz result
-const resultTemplateSource = document.getElementById("result-template").innerHTML;
-const resultTemplate = Handlebars.compile(resultTemplateSource);
+document.addEventListener('DOMContentLoaded', async function () {
+  try {
+      const response = await fetch('https://raw.githubusercontent.com/your-username/your-repo/main/questions.json');
+      const data = await response.json();
+      // Process the data and initialize your application
+  } catch (error) {
+      console.error('Error fetching data:', error);
+  }
+});
 
-// Logic to start the quiz
-function startQuiz() {
-    const name = document.getElementById("name").value;
-    const selectedQuiz = document.getElementById("quiz-select").value;
-
-    // Fetch quiz data for the selected quiz asynchronously
-    fetchQuizData(selectedQuiz)
-        .then(quizData => {
-            // Render the quiz questions using the Handlebars template
-            const quizHtml = quizTemplate(quizData);
-            // Display the quiz questions in the current view
-            // Add event listeners to handle user responses
-        })
-        .catch(error => {
-            console.error("Error fetching quiz data:", error);
-        });
+function loadTemplate(templateId, data) {
+  const source = $('#' + templateId).html();
+  const template = Handlebars.compile(source);
+  return template(data);
 }
 
-// Logic to handle user responses and calculate the result
-// Update the view accordingly
+function startQuiz(name, selectedQuiz) {
+    // Fetch quiz data asynchronously
+    $.getJSON(`${apiEndpoint}/${selectedQuiz}`).done(data => {
+        quizData = data;
+        currentQuestionIndex = 0;
+        correctAnswers = 0;
+        startTime = new Date().getTime();
+        showNextQuestion();
+    });
+}
 
-// Similar functions for handling quiz result and displaying the result view
+function showNextQuestion() {
+    if (currentQuestionIndex < quizData.questions.length) {
+        const question = quizData.questions[currentQuestionIndex];
+        showView('quizPage', {
+            questionIndex: currentQuestionIndex + 1,
+            questionText: question.text,
+            isMultipleChoice: question.type === 'multiple-choice',
+            options: question.options
+        });
+    } else {
+        showEndPage();
+    }
+}
+
+function showFeedback(isCorrect, correctAnswer) {
+    showView('feedbackPage', { isCorrect, correctAnswer });
+}
+
+function showEndPage() {
+    const elapsedSeconds = (new Date().getTime() - startTime) / 1000;
+    const score = Math.round((correctAnswers / quizData.questions.length) * 100);
+    const passed = score > 80;
+    showView('endPage', {
+        name: quizData.name,
+        passed,
+        elapsedSeconds,
+        correctAnswers,
+        totalQuestions: quizData.questions.length
+    });
+}
+
+// Event handlers
+$(document).on('submit', '#startForm', function (e) {
+    e.preventDefault();
+    const name = $('#name').val();
+    const selectedQuiz = $('#quiz').val();
+    showView('quizPage', { name });
+    startQuiz(name, selectedQuiz);
+});
+
+$(document).on('click', '#submitAnswer', function () {
+    const userAnswer = $('input[type=text]').val(); // Adjust selector based on your needs
+    const question = quizData.questions[currentQuestionIndex];
+
+    if (question.type === 'multiple-choice') {
+        // Adjust the logic for multiple-choice questions
+        // Check if userAnswer is equal to the correct answer
+    } else {
+        // Check if userAnswer is equal to the correct answer
+        const isCorrect = userAnswer.toLowerCase() === question.answer.toLowerCase();
+        if (isCorrect) {
+            correctAnswers++;
+            showFeedback(true);
+            setTimeout(() => {
+                currentQuestionIndex++;
+                showNextQuestion();
+            }, 1000);
+        } else {
+            showFeedback(false, question.answer);
+        }
+    }
+});
+
+$(document).on('click', '#gotIt', function () {
+    currentQuestionIndex++;
+    showNextQuestion();
+});
+
+$(document).on('click', '#restartQuiz', function () {
+    showView('startPage');
+});
+
+$(document).on('click', '#goToStart', function () {
+    showView('startPage');
+});

@@ -1,0 +1,13 @@
+<!-- templates/quizPage.hbs -->
+<h2>Question {{questionIndex}}:</h2>
+<p>{{questionText}}</p>
+{{#if isMultipleChoice}}
+    <ul>
+        {{#each options}}
+            <li>{{this}}</li>
+        {{/each}}
+    </ul>
+{{else}}
+    <input type="text" id="answer" required>
+{{/if}}
+<button id="submitAnswer">Submit Answer</button>

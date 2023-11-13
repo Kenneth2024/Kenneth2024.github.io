@@ -1,0 +1,8 @@
+<!-- templates/endPage.hbs -->
+{{#if passed}}
+    <p>Congratulations {{name}}! You passed the quiz.</p>
+{{else}}
+    <p>Sorry {{name}}, you failed the quiz.</p>
+{{/if}}
+<button id="restartQuiz">Retake Quiz</button>
+<button id="goToStart">Return to Start Page</button>
