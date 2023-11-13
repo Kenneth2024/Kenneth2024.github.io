@@ -1,4 +1,63 @@
-body{background-color: #FFF9DD; color: #41FF00; }
-.jumbotron{background-color: black;}
-input{background-color: black; border-color: white; color: #41FF00; border-style: solid;}
-option{background-color: black; color: #41FF00; border-color: white;}
+/* Quiz Styles */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .quiz-container {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .question {
+    margin-bottom: 15px;
+  }
+  
+  .answer {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  /* Styling Radio Buttons */
+  
+  input[type="radio"] {
+    display: none;
+  }
+  
+  label {
+    display: block;
+    padding: 10px;
+    background-color: #e4e4e4;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type="radio"]:checked + label {
+    background-color: #4caf50;
+    color: #fff;
+  }
+  
+  /* Submit Button */
+  
+  .submit-btn {
+    display: block;
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .submit-btn:hover {
+    background-color: #2980b9;
+  }
+  
