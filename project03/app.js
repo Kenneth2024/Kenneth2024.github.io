@@ -1,107 +1,59 @@
-// app.js
-const apiEndpoint = 'https://my-json-server.typicode.com/Kenneth2024/project03database';
+var view = "0";
 
-let quizData, currentQuestionIndex, correctAnswers, startTime;
+document.addEventListener('DOMContentLoaded', function() {
 
-document.addEventListener('DOMContentLoaded', async function () {
-  try {
-      const response = await fetch('https://raw.githubusercontent.com/your-username/your-repo/main/questions.json');
-      const data = await response.json();
-      // Process the data and initialize your application
-  } catch (error) {
-      console.error('Error fetching data:', error);
+  //Rendering Initial View
+  view1 = renderView({},'#initialScreen');
+  document.querySelector('#display-data').innerHTML = view1;
+  
+  //Disabling the button unless there is something typed
+  document.querySelector('#submit').disabled = true;
+  document.querySelector('#name').onkeyup = () => {
+      if(document.querySelector('#name').value.length > 0 )
+        document.querySelector('#submit').disabled = false;
+      else
+        document.querySelector('#submit').disabled = true;
+  };
+
+document.querySelector('#form').onsubmit = () => {
+  //Saving the entered name
+  var name = document.querySelector('#name').value;
+  //choosing the type of quiz
+  if(document.querySelector('#quiz-selection').value === "1"){
+     quizId = "questionsQ1";
+     qid = 1;
+     backEndRestAPI(quizId,qid);
+     view2 = renderView(1, '#quiz_view1');
+     document.querySelector('#display-data').innerHTML = view2;
   }
-});
+  else{
+     quizId  = "questionsQ2";
+     qid = 1;
+     backEndRestAPI(quizId,qid);
+     view2 = renderView(1, '#quiz_view1');
+     document.querySelector('#display-data').innerHTML = view2;
+     //document.querySelector('#buttonQ1').onsubmit = () => {
+    // }
+  }
+  return false; 
+}//ending the onsubmit event
 
-function loadTemplate(templateId, data) {
-  const source = $('#' + templateId).html();
-  const template = Handlebars.compile(source);
-  return template(data);
-}
+ 
+}); //end of DOMContentLoaded 
 
-function startQuiz(name, selectedQuiz) {
-    // Fetch quiz data asynchronously
-    $.getJSON(`${apiEndpoint}/${selectedQuiz}`).done(data => {
-        quizData = data;
-        currentQuestionIndex = 0;
-        correctAnswers = 0;
-        startTime = new Date().getTime();
-        showNextQuestion();
-    });
-}
+  //Rendering View and Update DOM
+  function renderView(model, view){
+      var source = document.querySelector(view).innerHTML;
+      var template = Handlebars.compile(source);
+      var html = template(model);
+      return html;
+};
 
-function showNextQuestion() {
-    if (currentQuestionIndex < quizData.questions.length) {
-        const question = quizData.questions[currentQuestionIndex];
-        showView('quizPage', {
-            questionIndex: currentQuestionIndex + 1,
-            questionText: question.text,
-            isMultipleChoice: question.type === 'multiple-choice',
-            options: question.options
-        });
-    } else {
-        showEndPage();
+//Asynchronous Network Request
+async function backEndRestAPI(quizId,qid){
+  let api_endpoint = `https://my-json-server.typicode.com/Kenneth2024/project03database/${quizId}/${qid}`
+  const response = await fetch('https://my-json-server.typicode.com/Kenneth2024/project03database/questions')
+  const data = await response.json()
+  const html_element = renderView(data, view)
+  document.querySelector('#display-data').innerHTML = html_element;
     }
-}
-
-function showFeedback(isCorrect, correctAnswer) {
-    showView('feedbackPage', { isCorrect, correctAnswer });
-}
-
-function showEndPage() {
-    const elapsedSeconds = (new Date().getTime() - startTime) / 1000;
-    const score = Math.round((correctAnswers / quizData.questions.length) * 100);
-    const passed = score > 80;
-    showView('endPage', {
-        name: quizData.name,
-        passed,
-        elapsedSeconds,
-        correctAnswers,
-        totalQuestions: quizData.questions.length
-    });
-}
-
-// Event handlers
-$(document).on('submit', '#startForm', function (e) {
-    e.preventDefault();
-    const name = $('#name').val();
-    const selectedQuiz = $('#quiz').val();
-    showView('quizPage', { name });
-    startQuiz(name, selectedQuiz);
-});
-
-$(document).on('click', '#submitAnswer', function () {
-    const userAnswer = $('input[type=text]').val(); // Adjust selector based on your needs
-    const question = quizData.questions[currentQuestionIndex];
-
-    if (question.type === 'multiple-choice') {
-        // Adjust the logic for multiple-choice questions
-        // Check if userAnswer is equal to the correct answer
-    } else {
-        // Check if userAnswer is equal to the correct answer
-        const isCorrect = userAnswer.toLowerCase() === question.answer.toLowerCase();
-        if (isCorrect) {
-            correctAnswers++;
-            showFeedback(true);
-            setTimeout(() => {
-                currentQuestionIndex++;
-                showNextQuestion();
-            }, 1000);
-        } else {
-            showFeedback(false, question.answer);
-        }
-    }
-});
-
-$(document).on('click', '#gotIt', function () {
-    currentQuestionIndex++;
-    showNextQuestion();
-});
-
-$(document).on('click', '#restartQuiz', function () {
-    showView('startPage');
-});
-
-$(document).on('click', '#goToStart', function () {
-    showView('startPage');
-});
