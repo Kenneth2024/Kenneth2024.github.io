@@ -1,59 +1,56 @@
-var view = "0";
+let view = "0";
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
-  //Rendering Initial View
-  view1 = renderView({},'#initialScreen');
-  document.querySelector('#display-data').innerHTML = view1;
-  
-  //Disabling the button unless there is something typed
-  document.querySelector('#submit').disabled = true;
-  document.querySelector('#name').onkeyup = () => {
-      if(document.querySelector('#name').value.length > 0 )
-        document.querySelector('#submit').disabled = false;
-      else
-        document.querySelector('#submit').disabled = true;
-  };
+    // Rendering Initial View
+    const initialView = renderView({}, '#startPage');
+    document.querySelector('#display-data').innerHTML = initialView;
 
-document.querySelector('#form').onsubmit = () => {
-  //Saving the entered name
-  var name = document.querySelector('#name').value;
-  //choosing the type of quiz
-  if(document.querySelector('#quiz-selection').value === "1"){
-     quizId = "questionsQ1";
-     qid = 1;
-     backEndRestAPI(quizId,qid);
-     view2 = renderView(1, '#quiz_view1');
-     document.querySelector('#display-data').innerHTML = view2;
-  }
-  else{
-     quizId  = "questionsQ2";
-     qid = 1;
-     backEndRestAPI(quizId,qid);
-     view2 = renderView(1, '#quiz_view1');
-     document.querySelector('#display-data').innerHTML = view2;
-     //document.querySelector('#buttonQ1').onsubmit = () => {
-    // }
-  }
-  return false; 
-}//ending the onsubmit event
+    // Disabling the button unless there is something typed
+    const submitButton = document.querySelector('#submit');
+    const nameInput = document.querySelector('#name');
+    submitButton.disabled = true;
 
- 
-}); //end of DOMContentLoaded 
+    nameInput.onkeyup = () => {
+        submitButton.disabled = nameInput.value.length === 0;
+    };
 
-  //Rendering View and Update DOM
-  function renderView(model, view){
-      var source = document.querySelector(view).innerHTML;
-      var template = Handlebars.compile(source);
-      var html = template(model);
-      return html;
-};
+    document.querySelector('#form').onsubmit = () => {
+        // Saving the entered name
+        const name = nameInput.value;
 
-//Asynchronous Network Request
-async function backEndRestAPI(quizId,qid){
-  let api_endpoint = `https://my-json-server.typicode.com/Kenneth2024/kenneth2024.github.io${quizId}/${qid}`
-  const response = await fetch('https://my-json-server.typicode.com/Kenneth2024/kenneth2024.github.io/questions')
-  const data = await response.json()
-  const html_element = renderView(data, view)
-  document.querySelector('#display-data').innerHTML = html_element;
+        // Choosing the type of quiz
+        const quizSelection = document.querySelector('#quiz-selection');
+        const quizId = quizSelection.value === "1" ? "questionsQ1" : "questionsQ2";
+        const qid = 1;
+
+        backEndRestAPI(quizId, qid);
+        const quizView = renderView(1, '#quiz_view1');
+        document.querySelector('#display-data').innerHTML = quizView;
+
+        return false;
+    };
+
+});
+
+// Rendering View and Update DOM
+function renderView(model, view) {
+    const source = document.querySelector(view).innerHTML;
+    const template = Handlebars.compile(source);
+    const html = template(model);
+    return html;
+}
+
+// Asynchronous Network Request
+async function backEndRestAPI(quizId, qid) {
+    const apiEndpoint = `https://my-json-server.typicode.com/Kenneth2024/kenneth2024.github.io/${quizId}/${qid}`;
+
+    try {
+        const response = await fetch(apiEndpoint);
+        const data = await response.json();
+        const htmlElement = renderView(data, view);
+        document.querySelector('#display-data').innerHTML = htmlElement;
+    } catch (error) {
+        console.error('Error fetching data:', error);
     }
+}
