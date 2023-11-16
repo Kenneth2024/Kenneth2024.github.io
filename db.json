@@ -1,0 +1,131 @@
+{
+    "quizDetails": [
+      {
+        "id": 1,
+        "title": "Java Quiz"
+      },
+      {
+        "id": 2,
+        "title": "Javascript Quiz"
+      }
+    ],
+    "questionsQ1": [
+      {
+        "id": 1,
+        "type": "multipleChoice",
+        "prompt": "How do you declare a HashSet of Strings named 'words'?",
+        "choices": [
+          "HashSet<String> words = new HashSet<String>();",
+          "HashSet words = new HashSet<String>();",
+          "HashSet<String> words = new HashSet;",
+          "HashSet words = new HashSet;"
+        ],
+        "correctChoice": 0,
+        "explanation": "HashSet must include type parameters, and the correct syntax includes the use of generics <String>."
+      },
+      {
+        "id": 2,
+        "type": "narrative",
+        "prompt": "Explain the concept of method overloading in Java.",
+        "correctAnswer": "Method overloading is when multiple methods in the same class have the same name but differ in their parameter types or number of parameters. Java uses this to create more readable and flexible code.",
+        "explanation": "Method overloading allows a class to have multiple methods having the same name, if their parameter lists are different."
+      },
+      {
+        "id": 3,
+        "type": "multipleChoice",
+        "prompt": "Which of the following is true about the 'super' keyword in Java?",
+        "choices": [
+          "It is used to call the superclass constructor.",
+          "It is used to access the superclass fields and methods.",
+          "It is used to refer to the current object.",
+          "It is used to declare a constant variable."
+        ],
+        "correctChoice": 1,
+        "explanation": "'super' is used to refer to the superclass members (fields, methods) in the subclass."
+      },
+      {
+        "id": 4,
+        "type": "image",
+        "prompt": "Which image shows the correct UML diagram representation of an interface in Java?",
+        "choices": [
+          "rightAnswerQuiz1.png",
+          "wrongAnswerQuiz1.png"
+        ],
+        "correctChoice": 0,
+        "explanation": "The correct representation of an interface in UML includes the interface name, methods, and the '<<interface>>' stereotype."
+      },
+      {
+        "id": 5,
+        "type": "multipleChoice",
+        "prompt": "What is the purpose of the 'static' keyword in Java?",
+        "choices": [
+          "It makes a variable belong to the instance of a class.",
+          "It allows a method to access non-static members.",
+          "It is used to create multiple instances of a class.",
+          "It makes a variable or method belong to the class rather than an instance of the class."
+        ],
+        "correctChoice": 3,
+        "explanation": "'static' is used to declare members that belong to the class rather than instances of the class."
+      }
+    ],
+    "questionsQ2": [
+      {
+        "id": 1,
+        "type": "multipleChoice",
+        "prompt": "How do you check if a variable is an array in JavaScript?",
+        "choices": [
+          "isArray(variable)",
+          "variable.isArray()",
+          "typeof variable === 'array'",
+          "Array.isArray(variable)"
+        ],
+        "correctChoice": 3,
+        "explanation": "Array.isArray() is the correct method to check if a variable is an array in JavaScript."
+      },
+      {
+        "id": 2,
+        "type": "narrative",
+        "prompt": "Explain the concept of closures in JavaScript.",
+        "correctAnswer": "Closures occur when a function is defined inside another function, and the inner function has access to the outer function's variables. It 'closes over' the outer function's scope.",
+        "explanation": "Closures allow the inner function to access the outer function's variables even after the outer function has finished executing."
+      },
+      {
+        "id": 3,
+        "type": "multipleChoice",
+        "prompt": "Which of the following is used to make an asynchronous HTTP request in JavaScript?",
+        "choices": [
+          "fetch()",
+          "get()",
+          "ajax()",
+          "request()"
+        ],
+        "correctChoice": 0,
+        "explanation": "The fetch() function is used to make asynchronous HTTP requests in JavaScript."
+      },
+      {
+        "id": 4,
+        "type": "image",
+        "prompt": "Which image shows the correct syntax for a JavaScript arrow function?",
+        "choices": [
+          "rightAnswerQuiz2.png",
+          "wrongAnswerQuiz2.png"
+        ],
+        "correctChoice": 0,
+        "explanation": "The correct syntax for a JavaScript arrow function is shown in the first image."
+      },
+      {
+        "id": 5,
+        "type": "multipleChoice",
+        "prompt": "How do you declare a constant variable in JavaScript?",
+        "choices": [
+          "var",
+          "let",
+          "const",
+          "constant"
+        ],
+        "correctChoice": 2,
+        "explanation": "The const keyword is used to declare constant variables in JavaScript."
+      }
+    ]
+  }
+  
