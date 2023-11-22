@@ -1,0 +1,7 @@
+extends layout
+
+block content
+    h1 Video List
+    each video in videos
+        div
+            a(href=`/videos/details/${video.id}`) #{video.title}
