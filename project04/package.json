@@ -1,0 +1,14 @@
+{
+    "name": "my-video-sharing-app",
+    "version": "1.0.0",
+    "description": "A simple video-sharing web application for the 2022 FIFA World Cup",
+    "main": "server.js",
+    "scripts": {
+      "start": "node server.js"
+    },
+    "dependencies": {
+      "express": "^4.17.1",
+      "pug": "^3.0.2"
+    }
+  }
+  
