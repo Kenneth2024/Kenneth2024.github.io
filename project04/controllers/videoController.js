@@ -1,9 +1,13 @@
+let fetchedVideoData;
+let fetchedVideoDetails;
+
 exports.getVideoList = (req, res) => {
-    // Logic to fetch video list data from file storage
-    res.render('video/videoList', { videos: fetchedVideoData });
+    const video =0;
+    res.render('video/videoList', {video});
 };
 
-exports.getVideoDetails = (req, res) => {
-    // Logic to fetch video details data from file storage
-    res.render('video/videoDetail', { video: fetchedVideoDetails });
-};
+exports.getVideoDetail = (req, res) => {
+    // Fetch video data, including the YouTube link, based on the ID
+    const video = 0;
+    res.render('video/videoDetail', { video });
+  };

@@ -1,7 +1,9 @@
 extends layout
 
 block content
-    h1 Video List
-    each video in videos
-        div
-            a(href=`/videos/details/${video.id}`) #{video.title}
+  .video-list
+    h2 Video List
+    each video, index in videos
+      .video-item
+        h3= video.title
+        iframe(width='280', height='158', src='https://www.youtube.com/watch?v=YlTQCEIJxCg', frameborder='0', allowfullscreen, id=`video-${index}`)

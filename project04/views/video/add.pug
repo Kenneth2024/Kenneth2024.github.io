@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h2 Add a New Video
+  form(action='/videos/add', method='post')
+    label(for='videoUrl') Video URL:
+    input(type='text', name='videoUrl', required)
+    button(type='submit') Add Video

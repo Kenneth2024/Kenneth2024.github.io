@@ -1,6 +1,7 @@
 extends layout
 
 block content
-    h1 Video Details
-    p Title: #{video.title}
-    p Description: #{video.description}
+  .video-detail
+    h2 Video Detail Page
+    h3= video.title
+    iframe(width='560', height='315', src='https://www.youtube.com/watch?v=YlTQCEIJxCg', frameborder='0', allowfullscreen, id=0)
